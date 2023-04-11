@@ -1,0 +1,15 @@
+version: "3"
+services:
+  web-application-frontend:
+    hostname: web-application-frontend
+    image: web-application-frontend:latest
+    build:
+      context: .
+    ports:
+      - "4200:80"
+    deploy:
+      resources:
+        limits:
+          memory: 126M
+        reservations:
+          memory: 50M
