@@ -2,6 +2,7 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import "./Signin.css"
 
@@ -22,7 +23,7 @@ const SignIn: React.FC<Props> = () => {
         <div className='continer'>
             <div>
                 <div className='title'>
-                    <h1>Social Media Sentiment Analyisis</h1>
+                    <h1>Social Media Sentiment Analysis</h1>
                 </div>
             </div>
             <div>
@@ -36,6 +37,9 @@ const SignIn: React.FC<Props> = () => {
                     justifyContent: 'center',
                 }}>
                     <CardContent>
+                            <Typography color="rgb(0, 42, 255)" variant="h4" align="center" gutterBottom>
+                                Sign In
+                            </Typography>
                         <form onSubmit={handleSubmit}>
                             <TextField
                                 label="First Name"

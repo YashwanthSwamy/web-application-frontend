@@ -40,7 +40,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
     return (
       <div className='continer'>
         <div className='title'>
-          <h1>Social Media Sentiment Analyisis</h1>
+          <h1>Social Media Sentiment Analysis</h1>
         </div>
         <div className='cardContainer'>
           <Card variant="outlined" sx={{
@@ -53,7 +53,7 @@ export default class Login extends React.Component<LoginProps, LoginState> {
             justifyContent: 'center',
           }}>
             <CardContent>
-              <Typography variant="h4" align="center" gutterBottom>
+              <Typography color="rgb(0, 42, 255)" variant="h4" align="center" gutterBottom>
                 Login
               </Typography>
               <TextField

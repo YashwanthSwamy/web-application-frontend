@@ -10,6 +10,10 @@
     margin-top: 16px;
 }
 
+.title{
+    color: #00236a;
+}
+
 .existingUser{
     display: flex;
     justify-content: center;
