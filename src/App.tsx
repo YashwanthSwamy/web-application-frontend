@@ -11,7 +11,7 @@ function App() {
                 <BrowserRouter>
                     <React.Fragment>
                         <Switch>
-                            <Route exact path="/" component={LoginForm} />
+                            <Route path="" component={LoginForm} />
                             <Route path="/dashborad" component={Dashborad} />
                         </Switch>
                     </React.Fragment>
