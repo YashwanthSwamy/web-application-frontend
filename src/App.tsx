@@ -3,6 +3,7 @@ import './App.css';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Dashborad from './Dashboard/Dashboard';
 import LoginForm from './LoginForm/LoginForm';
+import SignIn from './SigninForm/Signin';
 
 function App() {
     return(
@@ -11,8 +12,9 @@ function App() {
                 <BrowserRouter>
                     <React.Fragment>
                         <Switch>
-                            <Route path="" component={LoginForm} />
+                            <Route exact path="/" component={LoginForm} />
                             <Route path="/dashborad" component={Dashborad} />
+                            <Route path="/signin" component={SignIn} />
                         </Switch>
                     </React.Fragment>
                 </BrowserRouter>

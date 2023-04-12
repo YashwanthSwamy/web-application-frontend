@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import "./LoginForm.css"
+import "./LoginForm.css";
 
 type LoginProps = {
   onLogin: (username: string, password: string) => void;
@@ -82,6 +82,9 @@ export default class Login extends React.Component<LoginProps, LoginState> {
                 >
                   Login
                 </Button>
+              </div>
+              <div className='newUser'>
+                <Button color="secondary" onClick={event =>  window.location.href='/signin'} >New User?</Button>
               </div>
             </CardContent>
           </Card>
