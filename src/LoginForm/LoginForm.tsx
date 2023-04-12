@@ -1,77 +1,92 @@
-import React from "react";
+import React from 'react';
+import {
+  Button,
+  Card,
+  CardContent,
+  TextField,
+  Typography,
+} from '@mui/material';
+import "./LoginForm.css"
 
-export interface Props {
-  shouldRemember: boolean;
-  onUsernameChange: (username: string) => void;
-  onPasswordChange: (password: string) => void;
-  onRememberChange: (remember: boolean) => void;
-  onSubmit: (username: string, password: string) => void;
+type LoginProps = {
+  onLogin: (username: string, password: string) => void;
+};
+
+type LoginState = {
+  username: string;
+  password: string;
+};
+
+export default class Login extends React.Component<LoginProps, LoginState> {
+  state: LoginState = {
+    username: '',
+    password: '',
+  };
+
+  handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ username: event.target.value });
+  };
+
+  handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ password: event.target.value });
+  };
+
+  handleLogin = () => {
+    const { username, password } = this.state;
+    this.props.onLogin(username, password);
+  };
+
+  render() {
+    return (
+      <div className='continer'>
+        <div className='title'>
+          <h1>Social Media Sentiment Analyisis</h1>
+        </div>
+        <div className='cardContainer'>
+          <Card variant="outlined" sx={{
+            maxWidth: 400,
+            margin: 'auto',
+            boxShadow: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <CardContent>
+              <Typography variant="h4" align="center" gutterBottom>
+                Login
+              </Typography>
+              <TextField
+                label="Username"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                value={this.state.username}
+                onChange={this.handleUsernameChange}
+              />
+              <TextField
+                label="Password"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                type="password"
+                value={this.state.password}
+                onChange={this.handlePasswordChange}
+              />
+              <div className="submitButton">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  onClick={this.handleLogin}
+                >
+                  Login
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
 }
-
-function LoginForm(props: Props) {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [remember, setRemember] = React.useState(props.shouldRemember);
-
-  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setUsername(value);
-    props.onUsernameChange(value);
-  };
-
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setPassword(value);
-    props.onPasswordChange(value);
-  };
-
-  const handleRememberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { checked } = e.target;
-    setRemember(checked);
-    props.onRememberChange(checked);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    props.onSubmit(username, password);
-  };
-
-  return (
-    <form data-testid="login-form" onSubmit={handleSubmit}>
-      <label htmlFor="username">Username:</label>
-      <input
-        data-testid="username"
-        type="text"
-        name="username"
-        value={username}
-        onChange={handleUsernameChange}
-      />
-
-      <label htmlFor="password">Password:</label>
-      <input
-        data-testid="password"
-        type="password"
-        name="password"
-        value={password}
-        onChange={handlePasswordChange}
-      />
-
-      <label>
-        <input
-          data-testid="remember"
-          name="remember"
-          type="checkbox"
-          checked={remember}
-          onChange={handleRememberChange}
-        />
-        Remember me?
-      </label>
-
-      <button type="submit" data-testid="submit">
-        Sign in
-      </button>
-    </form>
-  );
-}
-
-export default LoginForm;
