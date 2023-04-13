@@ -1,4 +1,4 @@
-.continer{
+.continer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,11 +6,11 @@
     flex-direction: column;
 }
 
-.submitButton{
+.submitButton {
     margin-top: 16px;
 }
 
-.newUser{
+.newUser {
     display: flex;
     justify-content: center;
     align-items: center;

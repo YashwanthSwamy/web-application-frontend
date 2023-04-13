@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 import "./Dashboard.css"
 
-function Dashborad() {
+function Dashboard() {
     return (
         <div className="container">
             <Typography variant="h2" align="center">
@@ -11,4 +11,4 @@ function Dashborad() {
     );
 }
 
-export default Dashborad;
+export default Dashboard;
