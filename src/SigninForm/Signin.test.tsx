@@ -1,6 +1,13 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import SignIn from "./Signin";
 
+const mockedUsedNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...(jest.requireActual("react-router-dom") as any),
+  useNavigate: () => mockedUsedNavigate
+}));
+
 describe("SignIn component", () => {
   test("renders all input fields and submit button", () => {
     render(<SignIn />);
