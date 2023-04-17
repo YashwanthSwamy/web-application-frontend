@@ -16,3 +16,18 @@
     align-items: center;
     margin-top: 16px;
 }
+
+.errorContainer{
+    background-color: rgb(68, 0, 0);
+    font-size: 14px;
+    height: 40px;
+    padding: 0px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.errorText{
+    padding-left: 24px;
+    padding-top: 12px;
+    color: white;
+}

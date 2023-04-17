@@ -8,6 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import "./LoginForm.css";
+import { useNavigate } from 'react-router-dom';
 
 
 interface LoginData {
@@ -17,6 +18,8 @@ interface LoginData {
 
 const LoginPage = () => {
   const [loginData, setLoginData] = useState<LoginData>({ username: '', password: '' });
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData({ ...loginData, username: event.target.value });
@@ -28,10 +31,10 @@ const LoginPage = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log("ggg", process.env.REACT_APP_LOGIN_BASE_URL)
 
-    // Send API call with loginData
     try {
-      const response = await fetch('https://example.com/api/login', {
+      const response = await fetch(`${process.env.REACT_APP_LOGIN_BASE_URL}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,8 +43,11 @@ const LoginPage = () => {
       });
 
       if (response.ok) {
+        setErrorMessage("");
         console.log('Login successful');
+        navigate('/dashborad');
       } else {
+        setErrorMessage("Username and Password didn't Match. Try Again");
         console.log('Login failed');
       }
     } catch (error) {
@@ -69,6 +75,9 @@ const LoginPage = () => {
               <Typography color="rgb(0, 42, 255)" variant="h4" align="center" gutterBottom>
                 Login
               </Typography>
+              {errorMessage && <div className='errorContainer'>
+                <p className='errorText'>Username and Password didn't Match. Try Again</p>
+              </div>}
               <TextField
                 label="Username"
                 variant="outlined"
