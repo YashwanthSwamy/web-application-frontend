@@ -15,11 +15,13 @@ describe("SignIn component", () => {
     const lastNameInput = screen.getByLabelText("Last Name");
     const emailInput = screen.getByLabelText("Email");
     const passwordInput = screen.getByLabelText("Password");
+    const userIdInput = screen.getByLabelText("Username");
     const submitButton = screen.getByRole("button", { name: "Sign In" });
     expect(firstNameInput).toBeInTheDocument();
     expect(lastNameInput).toBeInTheDocument();
     expect(emailInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
+    expect(userIdInput).toBeInTheDocument();
     expect(submitButton).toBeInTheDocument();
   });
 
@@ -34,15 +36,18 @@ describe("SignIn component", () => {
     const firstNameInput = screen.getByLabelText("First Name");
     const lastNameInput = screen.getByLabelText("Last Name");
     const emailInput = screen.getByLabelText("Email");
+    const userIdInput = screen.getByLabelText("Username");
     const passwordInput = screen.getByLabelText("Password");
 
     fireEvent.change(firstNameInput, { target: { value: "test" } });
     fireEvent.change(lastNameInput, { target: { value: "test" } });
+    fireEvent.change(userIdInput, { target: { value: "test" } });
     fireEvent.change(emailInput, { target: { value: "test.test@example.com" } });
     fireEvent.change(passwordInput, { target: { value: "password" } });
 
     expect(firstNameInput).toHaveValue("test");
     expect(lastNameInput).toHaveValue("test");
+    expect(userIdInput).toHaveValue("test");
     expect(emailInput).toHaveValue("test.test@example.com");
     expect(passwordInput).toHaveValue("password");
   });
