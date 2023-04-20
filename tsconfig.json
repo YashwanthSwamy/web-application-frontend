@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "../notus-react/src/components/Cards/CardBarChart.js"  ]
 }

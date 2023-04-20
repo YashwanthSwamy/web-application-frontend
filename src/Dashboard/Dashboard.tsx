@@ -1,254 +1,64 @@
-// import Typography from "@mui/material/Typography";
-// import { useState } from 'react';
-// import {
-//   Button,
-//   Card,
-//   CardContent,
-//   TextField,
-// } from '@mui/material';
-// import NavBar from "../NavBar/NavBar";
-// import "./Dashboard.css";
-// import { Search } from "@mui/icons-material";
-// import { yellow } from "@mui/material/colors";
-
-// function Dashboard(): JSX.Element {
-//   const [searchText, setSearchText] = useState<string>('');
-
-//   const handleSearch = () => {
-//     // handle search logic here
-//   };
-
-//   return (
-//     <div>
-//       <NavBar />
-//       <Typography>
-//       <div>
-//         <Typography variant="h3" align="center" sx={{ mb: 4 }}>
-//           Welcome to Social Media Sentiment Analysis
-//         </Typography>
-//         <br></br>
-//         <div className="top-container">
-//         <Typography variant="h5" align="left" sx={{ mb: 2, mr: 10 }}>
-//             Recommended Topics:
-//         </Typography>
-//         </div>
-//         <div className="topics-container">
-//           <ul className="topics-list">
-//             <li>Topic 1</li>
-//             <li>Topic 2</li>
-//             <li>Topic 3</li>
-//             <li>Topic 1</li>
-//             <li>Topic 2</li>
-//             <li>Topic 3</li>
-//             <li>Topic 1</li>
-//             <li>Topic 2</li>
-//             <li>Topic 3</li>
-//           </ul>
-//         </div>
-//         <br></br>
-//         <div className="top-container">
-//         <Typography variant="h4" align="left" sx={{ mb: 2, mr: 10 }}>
-//             Find Topics:
-//         </Typography>
-//         </div>
-//         <div className="search-container">
-//           <TextField
-//             label="Search"
-//             variant="outlined"
-//             value={searchText}
-//             onChange={(event) => setSearchText(event.target.value)}
-//             InputProps={{
-//               endAdornment: (
-//                 <Button variant="contained" onClick={handleSearch}>
-//                   <Search />
-//                 </Button>
-//               ),
-//             }}
-//           />
-//         </div>
-//       </div>
-//       </Typography>
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
-
-
-
-
-// import Typography from "@mui/material/Typography";
-// import { useState } from 'react';
-// import {
-//   Button,
-//   Card,
-//   CardContent,
-//   TextField,
-// } from '@mui/material';
-// import NavBar from "../NavBar/NavBar";
-// import "./Dashboard.css";
-// import { Search } from "@mui/icons-material";
-// import { yellow } from "@mui/material/colors";
-
-// function Dashboard(): JSX.Element {
-//   const [searchText, setSearchText] = useState<string>('');
-
-//   const handleSearch = () => {
-//     // handle search logic here
-//   };
-
-//   return (
-//     <div>
-//       <NavBar />
-//       <Typography>
-//         <div>
-//           <Typography variant="h3" align="center" sx={{ mb: 4 }}>
-//             Welcome to Social Media Sentiment Analysis
-//           </Typography>
-//           <br></br>
-//           <div className="top-container">
-//             <Typography variant="h5" align="left" sx={{ mb: 2, mr: 10 }}>
-//               Recommended Topics:
-//             </Typography>
-//           </div>
-//           <div className="topics-container">
-//             <div className="topics-grid">
-//               <div className="topic-item">
-//                 <div className="oval">Topic 1</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 2</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 3</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 4</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 5</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 6</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 7</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 8</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 9</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 10</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 11</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 12</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 13</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 14</div>
-//               </div>
-//               <div className="topic-item">
-//                 <div className="oval">Topic 15</div>
-//               </div>
-//             </div>
-//           </div>
-//           <br></br>
-//           <div className="top-container">
-//             <Typography variant="h4" align="left" sx={{ mb: 2, mr: 10 }}>
-//               Find Topics:
-//             </Typography>
-//           </div>
-//           <div className="search-container">
-//             <TextField
-//               label="Search"
-//               variant="outlined"
-//               value={searchText}
-//               onChange={(event) => setSearchText(event.target.value)}
-//               InputProps={{
-//                 endAdornment: (
-//                   <Button variant="contained" onClick={handleSearch}>
-//                     <Search />
-//                   </Button>
-//                 ),
-//               }}
-//             />
-//           </div>
-//         <div/>
-//       </Typography>
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
-
 import Typography from "@mui/material/Typography";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Button,
+  TextField,
   Card,
   CardContent,
-  TextField,
+  Grid,
 } from '@mui/material';
 import NavBar from "../NavBar/NavBar";
 import "./Dashboard.css";
 import { Search } from "@mui/icons-material";
-import { yellow } from "@mui/material/colors";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar } from 'recharts';
 
 function Dashboard(): JSX.Element {
   const [searchText, setSearchText] = useState<string>('');
 
+  interface SentimentData {
+    pos: string;
+    neu: string;
+    neg: string;
+  }
+  
+  const [data, setData] = useState<SentimentData[]>([]);
+
   const handleSearch = () => {
-    // handle search logic here
+    // call API to get data based on search text
+    fetch(`http://127.0.0.1:7007/analyze/${searchText}`)
+      .then(response => response.json())
+      .then(data => setData(data));
   };
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:7007/analyze/sentiment")
+      .then((response) => response.json())
+      .then((data: SentimentData) => setData([data]))
+      .catch((error) => console.error(error));
+  }, []);
+
+  const recommendedTopics = [
+    { id: 1, title: 'COVID19', description: 'Pandemic' },
+    { id: 2, title: 'Bitcoin', description: 'Cryptocurrency' },
+    { id: 3, title: 'ClimateChange', description: 'Environment' },
+    { id: 4, title: 'BlackLivesMatter', description: 'Activism' },
+  ];
+
+  const handleTopicClick = (topicTitle: string) => {
+    setSearchText(topicTitle);
+  }
 
   return (
     <div>
       <NavBar />
-      <Typography>
       <div>
-        <Typography variant="h3" align="center" sx={{ mb: 4 }}>
-          Welcome to Social Media Sentiment Analysis
-        </Typography>
-        <br></br>
-        <div className="top-container">
-        <Typography variant="h5" align="center" sx={{ mb: 2, mr: 10 }}>
-            Recommended Topics:
-        </Typography>
+        <div className="dashboard-container">
+          <Typography variant="h5" align="left" sx={{ mb: 4, mr: 100 }}>
+            D A S H B O A R D
+          </Typography>
         </div>
-        <div className="topics-container">
-          <div className="topics-grid">
-            <div className="topic-oval">Topic 1</div>
-            <div className="topic-oval">Topic 2</div>
-            <div className="topic-oval">Topic 3</div>
-            <div className="topic-oval">Topic 4</div>
-            <div className="topic-oval">Topic 5</div>
-            <div className="topic-oval">Topic 6</div>
-            <div className="topic-oval">Topic 7</div>
-            <div className="topic-oval">Topic 8</div>
-            <div className="topic-oval">Topic 9</div>
-            <div className="topic-oval">Topic 10</div>
-            <div className="topic-oval">Topic 11</div>
-            <div className="topic-oval">Topic 12</div>
-            {/* <div className="topic-oval">Topic 13</div>
-            <div className="topic-oval">Topic 14</div>
-            <div className="topic-oval">Topic 15</div> */}
-          </div>
-        </div>
-        <br></br>
-        <div className="top-container">
-        <Typography variant="h4" align="center" sx={{ mb: 2, mr: 10 }}>
-            Find Topics:
-        </Typography>
-        </div>
-        <div className="search-container">
+        <div>
           <TextField
             label="Search"
             variant="outlined"
@@ -263,24 +73,59 @@ function Dashboard(): JSX.Element {
             }}
           />
         </div>
+        <br />
+        <br></br>
         <div className="topics-container">
-          <div className="topic-container">
-            <div className="topic-oval">Topic 1</div>
-            <div className="topic-oval">Topic 2</div>
-            <div className="topic-oval">Topic 3</div>
-            <div className="topic-oval">Topic 4</div>
-            <div className="topic-oval">Topic 5</div>
-            <div className="topic-oval">Topic 6</div>
-            <div className="topic-oval">Topic 7</div>
-            <div className="topic-oval">Topic 8</div>
-            <div className="topic-oval">Topic 9</div>
-            <div className="topic-oval">Topic 10</div>
-            <div className="topic-oval">Topic 11</div>
-            <div className="topic-oval">Topic 12</div>
-          </div>
+          <Grid container spacing={3}>
+            {recommendedTopics.map((topic) => (
+              <Grid item xs={12} sm={6} md={3} key={topic.id}>
+                <Card onClick={() => handleTopicClick(topic.title)}>
+                  <CardContent>
+                    <Typography gutterBottom variant="h6" component="h2">
+                      {topic.title}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      {topic.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </div>
+        <br />
+        <br></br>
+        <br></br>
       </div>
-      </Typography>
+      <div style={{ display: "flex" }}>
+        {data.length > 0 && (
+          <div style={{ flex: 1 }}>
+            <LineChart width={600} height={300} data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="pos" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="neu" stroke="#8884d8" activeDot={{ r: 8 }} />
+            </LineChart>
+          </div>
+        )}
+        {data.length > 0 && (
+          <div style={{ flex: 1 }}>
+            <BarChart width={600} height={300} data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="neu" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="neg" fill="#8884d8" />
+            </BarChart>
+          </div>
+        )}
+      </div>
+      <div className="image-container">
+        <img src={'http://127.0.0.1:7007/analyze/wordcloud'} alt="Wordcloud" />
+    </div>
     </div>
   );
 };
