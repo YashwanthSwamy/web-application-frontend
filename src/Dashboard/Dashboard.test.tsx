@@ -1,20 +1,3 @@
-// import { render, screen } from '@testing-library/react';
-// import Dashboard from './Dashboard';
-
-// const mockedUsedNavigate = jest.fn();
-
-// jest.mock("react-router-dom", () => ({
-//   ...(jest.requireActual("react-router-dom") as any),
-//   useNavigate: () => mockedUsedNavigate
-// }));
-
-// test('renders', () => {
-//   render(<Dashboard />);
-//   const linkElement = screen.getByText(/Dashboard/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
-
-
 import { render, fireEvent, screen } from '@testing-library/react';
 import Dashboard from './Dashboard';
 
@@ -26,30 +9,28 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe('Dashboard', () => {
-  test('renders', () => {
-    render(<Dashboard />);
-    const linkElement = screen.getByText(/Dashboard/i);
-    expect(linkElement).toBeInTheDocument();
-  });
+   test('renders', () => {
+     render(<Dashboard />);
+     const dashboardTitle = screen.getByText('D A S H B O A R D');
+     expect(dashboardTitle).toBeInTheDocument();
+   });
 
   test('displays recommended topics', () => {
     render(<Dashboard />);
-    const topicsTitle = screen.getByText('Recommended Topics:');
+    const topicsTitle = screen.getByText('COVID19');
     expect(topicsTitle).toBeInTheDocument();
 
-    const topicsList = screen.getAllByRole('listitem');
+    const topicsList = screen.getAllByRole('heading');
     expect(topicsList.length).toBeGreaterThan(0);
   });
 
   test('allows search for topics', () => {
     render(<Dashboard />);
-    const searchTitle = screen.getByText('Find Topics:');
-    expect(searchTitle).toBeInTheDocument();
 
     const searchInput = screen.getByLabelText('Search');
     expect(searchInput).toBeInTheDocument();
 
-    const searchButton = screen.getByRole('button', { name: 'search' });
+    const searchButton = screen.getByTestId('SearchIcon');
     expect(searchButton).toBeInTheDocument();
 
     fireEvent.change(searchInput, { target: { value: 'test' } });
