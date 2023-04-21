@@ -26,17 +26,23 @@ function Dashboard(): JSX.Element {
 
   const handleSearch = () => {
     // call API to get data based on search text
-    fetch(`http://127.0.0.1:7007/analyze/${searchText}`)
+    fetch(`https://sentiment-analysis-analyze.herokuapp.com/analyze/${searchText}`)
       .then(response => response.json())
       .then(data => setData(data));
   };
+  console.log(handleSearch);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:7007/analyze/sentiment")
+    fetch("https://sentiment-analysis-analyze.herokuapp.com/analyze/sentiment")
       .then((response) => response.json())
       .then((data: SentimentData) => setData([data]))
       .catch((error) => console.error(error));
   }, []);
+  console.log(useEffect);
+
+  setTimeout(function(){
+    window.location.reload();
+ }, 20000);
 
   const recommendedTopics = [
     { id: 1, title: 'COVID19', description: 'Pandemic' },
@@ -124,7 +130,7 @@ function Dashboard(): JSX.Element {
         )}
       </div>
       <div className="image-container">
-        <img src={'http://127.0.0.1:7007/analyze/wordcloud'} alt="Wordcloud" />
+        <img src={'https://sentiment-analysis-analyze.herokuapp.com/analyze/wordcloud'} alt="Wordcloud" />
     </div>
     </div>
   );
