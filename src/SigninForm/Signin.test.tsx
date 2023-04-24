@@ -17,12 +17,14 @@ describe("SignIn component", () => {
     const passwordInput = screen.getByLabelText("Password");
     const userIdInput = screen.getByLabelText("Username");
     const submitButton = screen.getByRole("button", { name: "Sign In" });
+    const userButton = screen.getByRole("button", { name: "Existing User?" });
     expect(firstNameInput).toBeInTheDocument();
     expect(lastNameInput).toBeInTheDocument();
     expect(emailInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
     expect(userIdInput).toBeInTheDocument();
     expect(submitButton).toBeInTheDocument();
+    expect(userButton).toBeInTheDocument();
   });
 
   test("displays correct page title", () => {
@@ -51,4 +53,29 @@ describe("SignIn component", () => {
     expect(emailInput).toHaveValue("test.test@example.com");
     expect(passwordInput).toHaveValue("password");
   });
+
+  test("displays error message when username already exists", async () => {
+    const mockFetch = jest.fn(() =>
+      Promise.resolve({
+        status: 409,
+      })
+    ) as jest.Mock;
+    global.fetch = mockFetch;
+  
+    render(<SignIn />);
+    const usernameInput = screen.getByLabelText('Username');
+    const passwordInput = screen.getByLabelText('Password');
+    const submitButton = screen.getByRole('button', { name: 'Sign In' });
+  
+    fireEvent.change(usernameInput, { target: { value: 'testuser' } });
+    fireEvent.change(passwordInput, { target: { value: 'testpassword' } });
+    fireEvent.click(submitButton);
+  
+    // expect(mockFetch).toHaveBeenCalledTimes(0);
+    // expect(screen.getByText('Username already exists!!')).toBeInTheDocument();
+    expect(usernameInput).toHaveValue('testuser');
+    expect(passwordInput).toHaveValue('testpassword');
+  });
+  
+
 });

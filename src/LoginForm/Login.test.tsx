@@ -14,9 +14,11 @@ describe('LoginPage', () => {
     const usernameInput = screen.getByLabelText('Username');
     const passwordInput = screen.getByLabelText('Password');
     const submitButton = screen.getByRole("button", { name: "Login" });
+    const newuserButton = screen.getByRole("button", { name: "New User?" });
     expect(usernameInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
     expect(submitButton).toBeInTheDocument();
+    expect(newuserButton).toBeInTheDocument();
   });
 
   test('submits login data', async () => {
@@ -30,10 +32,12 @@ describe('LoginPage', () => {
     const usernameInput = screen.getByLabelText('Username');
     const passwordInput = screen.getByLabelText('Password');
     const submitButton = screen.getByRole("button", { name: "Login" });
+    const newuserButton = screen.getByRole("button", { name: "New User?" });
 
     fireEvent.change(usernameInput, { target: { value: 'testuser' } });
     fireEvent.change(passwordInput, { target: { value: 'testpassword' } });
     fireEvent.click(submitButton);
+    fireEvent.click(newuserButton);
 
     await waitFor(() => {
       expect(mockFetch).toHaveBeenCalledTimes(1);
@@ -55,6 +59,27 @@ describe('LoginPage', () => {
 
     fireEvent.change(usernameInput, { target: { value: '' } });
     expect(submitButton).toBeDisabled();
+  });
+
+  test('handles API errors', async () => {
+    const mockFetch = jest.fn(() => Promise.reject(new Error('API call failed')));
+    global.fetch = mockFetch;
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    render(<LoginPage />);
+    const usernameInput = screen.getByLabelText('Username');
+    const passwordInput = screen.getByLabelText('Password');
+    const submitButton = screen.getByRole("button", { name: "Login" });
+
+    fireEvent.change(usernameInput, { target: { value: 'testuser' } });
+    fireEvent.change(passwordInput, { target: { value: 'testpassword' } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+      expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+    });
+
+    consoleErrorSpy.mockRestore();
   });
 
 });
