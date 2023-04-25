@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
+    "@types/recharts": "^1.8.24",
     "dotenv": "^16.0.3"
   },
   "scripts": {
