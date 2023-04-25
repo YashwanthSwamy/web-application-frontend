@@ -68,6 +68,7 @@ function Dashboard(): JSX.Element {
           <TextField
             label="Search"
             variant="outlined"
+            className="search-bar"
             value={searchText}
             onChange={(event) => setSearchText(event.target.value)}
             InputProps={{
@@ -82,7 +83,7 @@ function Dashboard(): JSX.Element {
         <br />
         <br></br>
         <div className="topics-container">
-          <Grid container spacing={3}>
+          <Grid container spacing={3} className="grid-container">
             {recommendedTopics.map((topic) => (
               <Grid item xs={12} sm={6} md={3} key={topic.id}>
                 <Card onClick={() => handleTopicClick(topic.title)}>
