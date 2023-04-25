@@ -37,4 +37,13 @@ describe('Dashboard', () => {
     fireEvent.click(searchButton);
     // expect search functionality to be tested here
   });
+
+  test('handles topic click', () => {
+    render(<Dashboard />);
+
+    const topicsList = screen.getAllByRole('heading');
+    const topicTitle = topicsList[0].textContent;
+
+    fireEvent.click(topicsList[0]);
+  });
 });

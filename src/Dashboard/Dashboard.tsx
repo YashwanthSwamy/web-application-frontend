@@ -14,7 +14,12 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 import { BarChart, Bar } from 'recharts';
 
 function Dashboard(): JSX.Element {
-  const [searchText, setSearchText] = useState<string>('');
+  const [searchText, setSearchText] = useState<string>(() => {
+    const savedSearchText = localStorage.getItem('searchText');
+    return savedSearchText !== null ? savedSearchText : '';
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
 
   interface SentimentData {
     pos: string;
@@ -22,9 +27,14 @@ function Dashboard(): JSX.Element {
     neg: string;
   }
   
+  useEffect(() => {
+    localStorage.setItem('searchText', searchText);
+  }, [searchText]);
+
   const [data, setData] = useState<SentimentData[]>([]);
 
   const handleSearch = () => {
+    setIsLoading(true);
     // call API to get data based on search text
     fetch(`https://sentiment-analysis-analyze.herokuapp.com/analyze/${searchText}`)
       .then(response => response.json())
@@ -33,16 +43,16 @@ function Dashboard(): JSX.Element {
   console.log(handleSearch);
 
   useEffect(() => {
-    fetch("https://sentiment-analysis-analyze.herokuapp.com/analyze/sentiment")
+    fetch(`https://sentiment-analysis-analyze.herokuapp.com/analyze/${searchText}/sentiment`)
       .then((response) => response.json())
       .then((data: SentimentData) => setData([data]))
       .catch((error) => console.error(error));
+      setTimeout(function(){
+      window.location.reload();
+      setIsLoading(false);
+      }, 10000);
   }, []);
   console.log(useEffect);
-
-  setTimeout(function(){
-    window.location.reload();
- }, 20000);
 
   const recommendedTopics = [
     { id: 1, title: 'COVID19', description: 'Pandemic' },
@@ -74,6 +84,7 @@ function Dashboard(): JSX.Element {
               endAdornment: (
                 <Button variant="contained" onClick={handleSearch}>
                   <Search />
+                  {isLoading ? <>Loading..</> : <>Search</>}
                 </Button>
               ),
             }}
@@ -102,6 +113,11 @@ function Dashboard(): JSX.Element {
         <br />
         <br></br>
         <br></br>
+        <div className="dashboard-container">
+          <Typography variant="h5" align="left" sx={{ mb: 4, mr: 100 }}>
+            ANALYSIS RESULTS : {searchText}
+          </Typography>
+        </div>
       </div>
       <div style={{ display: "flex" }}>
         {data.length > 0 && (
@@ -130,7 +146,7 @@ function Dashboard(): JSX.Element {
         )}
       </div>
       <div className="image-container">
-        <img src={'https://sentiment-analysis-analyze.herokuapp.com/analyze/wordcloud'} alt="Wordcloud" />
+        <img src={`https://sentiment-analysis-analyze.herokuapp.com/analyze/${searchText}/wordcloud`} alt="Wordcloud" />
     </div>
     </div>
   );
