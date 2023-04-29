@@ -46,4 +46,13 @@ describe('Dashboard', () => {
 
     fireEvent.click(topicsList[0]);
   });
+
+  test('displays correct topic title', () => {
+    render(<Dashboard />);
+    const topicsList = screen.getAllByRole('heading');
+    const topicTitle = topicsList[2].textContent;
+  
+    expect(topicTitle).toEqual('COVID19');
+  });
+  
 });
