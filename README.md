@@ -1,26 +1,21 @@
 # Project Rubric
 
-| Work Level | Commentary| 
+| Rubric | Commentary| 
 |:---:|:---:|
-| Web application | [AppLink](https://senti-duplg2fs2a-uc.a.run.app/), (Git Repo)[https://github.com/YashwanthSwamy/web-application-frontend] |:---:|:---:|
-| basic form, reporting | 
-Data collection
-Data analyzer
-Unit tests
-Data persistence
-any data store
-Rest collaboration internal or API endpoint
-Product environment
-
-Integration tests
-Using mock objects or any test doubles
-Continuous integration
-Production monitoring
-instrumenting
-
-Acceptance tests
-Event collaboration messaging
-Continuous delivery
+| Web application basic form, reporting | [AppLink](https://senti-duplg2fs2a-uc.a.run.app/), [Git Repo](https://github.com/YashwanthSwamy/web-application-frontend)|
+|Data collection|[Collector code](https://github.com/SudarshanSridhar/CollectorForSentimentAnalysis/blob/main/TweepyApi.pyP)|
+|Data analyzer|[Analyzer code](https://github.com/Varsha-JK/sentiment-analysis-analyzer/blob/main/analyzer.py)|
+|Unit tests||
+|Data persistence|[Code](https://github.com/SudarshanSridhar/CollectorForSentimentAnalysis/blob/main/Connection.py) connecting to Postgresql|
+|Rest collaboration internal or API endpoint|[Frontend code](https://github.com/YashwanthSwamy/web-application-frontend/blob/main/src/Dashboard/Dashboard.tsx) - Integrating frontend with backend API end points|
+|Product environment||
+|Integration tests||
+|Using mock objects or any test doubles| [Test code](https://github.com/Varsha-JK/sentiment-analysis-analyzer/blob/main/test/conftest.py) - Testing backend API calls through Mock object|
+|Continuous integration|[CircleCI](https://app.circleci.com/projects/project-dashboard/github/YashwanthSwamy/)|
+|Production monitoring||
+|Acceptance tests||
+|Event collaboration messaging||
+|Continuous delivery|[CircleCI](https://app.circleci.com/projects/project-dashboard/github/YashwanthSwamy/)|
 
 
 # Getting Started with Create React App
