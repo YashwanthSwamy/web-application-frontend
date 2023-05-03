@@ -1,22 +1,22 @@
 # Project Rubric
 
-| Rubric | Commentary| 
+| Work Level | Commentary| 
 |:---:|:---:|
-| Web application basic form, reporting | [AppLink](https://senti-duplg2fs2a-uc.a.run.app/), [Git Repo](https://github.com/YashwanthSwamy/web-application-frontend)|
-|Data collection|[Collector code](https://github.com/SudarshanSridhar/CollectorForSentimentAnalysis/blob/main/TweepyApi.pyP)|
-|Data analyzer|[Analyzer code](https://github.com/Varsha-JK/sentiment-analysis-analyzer/blob/main/analyzer.py)|
-|Unit tests||
-|Data persistence|[Code](https://github.com/SudarshanSridhar/CollectorForSentimentAnalysis/blob/main/Connection.py) connecting to Postgresql|
-|Rest collaboration internal or API endpoint|[Frontend code](https://github.com/YashwanthSwamy/web-application-frontend/blob/main/src/Dashboard/Dashboard.tsx) - Integrating frontend with backend API end points|
-|Product environment||
-|Integration tests||
-|Using mock objects or any test doubles| [Test code](https://github.com/Varsha-JK/sentiment-analysis-analyzer/blob/main/test/conftest.py) - Testing backend API calls through Mock object|
-|Continuous integration|[CircleCI](https://app.circleci.com/projects/project-dashboard/github/YashwanthSwamy/)|
-|Production monitoring||
-|Acceptance tests||
-|Event collaboration messaging||
-|Continuous delivery|[CircleCI](https://app.circleci.com/projects/project-dashboard/github/YashwanthSwamy/)|
-
+| Web application | [AppLink](https://senti-duplg2fs2a-uc.a.run.app/), [GitRepo](https://github.com/YashwanthSwamy/web-application-frontend) |:---:|:---:|
+| basic form, reporting | [AppLink](https://senti-duplg2fs2a-uc.a.run.app/), [GitRepo](https://github.com/YashwanthSwamy/web-application-frontend) |:---:|
+| Data collection | [Collector](https://github.com/SudarshanSridhar/CollectorForSentimentAnalysis)|:---:|
+| Data analyzer | [Analyzer](https://github.com/Varsha-JK/sentiment-analysis-analyzer)|:---:|
+| Unit tests | [Dashboard](https://github.com/YashwanthSwamy/web-application-frontend/blob/main/src/Dashboard/Dashboard.test.tsx), [Login](https://github.com/YashwanthSwamy/web-application-frontend/blob/main/src/LoginForm/Login.test.tsx), [Signin](https://github.com/YashwanthSwamy/web-application-frontend/blob/main/src/SigninForm/Signin.test.tsx) |:---:|
+| Data persistence any data store | [Code](https://github.com/SudarshanSridhar/CollectorForSentimentAnalysis/blob/main/Connection.py) connecting to Postgresql |:--:|
+| Rest collaboration internal or API endpoint | [Frontend code](https://github.com/YashwanthSwamy/web-application-frontend/blob/main/src/Dashboard/Dashboard.tsx) - Integrating frontend with backend API end points |:--:|
+| Product environment | [Web Page on GCP at 2.47](https://drive.google.com/file/d/1Bzy4iC968VXBoWmdVlWLZZkMCnaWGpz7/view), [Backend,Analyzer,Collector on Heroku at 1.59](https://drive.google.com/file/d/1Bzy4iC968VXBoWmdVlWLZZkMCnaWGpz7/view)|:--:|
+| Integration tests | [Link](https://github.com/YashwanthSwamy/web-application-frontend/blob/main/src/IntegrationTests.test.tsx)|:--:|
+| Using mock objects or any test doubles | [Test code](https://github.com/Varsha-JK/sentiment-analysis-analyzer/blob/main/test/conftest.py) - Testing backend API calls through Mock object|:--:|
+| Continuous integration | [CircleCI](https://app.circleci.com/projects/project-dashboard/github/YashwanthSwamy/)|:--:|
+| Production monitoring instrumenting | [Grafana Monitoring at 4.46](https://drive.google.com/file/d/1Bzy4iC968VXBoWmdVlWLZZkMCnaWGpz7/view)
+| Acceptance tests | [Link](https://github.com/YashwanthSwamy/web-application-frontend/blob/main/src/AcceptanceTests.test.tsx)|:--:|
+| Event collaboration messaging |
+| Continuous delivery | [CircleCI](https://app.circleci.com/projects/project-dashboard/github/YashwanthSwamy/)|:--:|
 
 # Getting Started with Create React App
 
